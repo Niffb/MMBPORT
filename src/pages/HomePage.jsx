@@ -132,13 +132,13 @@ export default function HomePage() {
           <div className="about-section__text">
             <h2 className="about-section__heading">About</h2>
             <p className="about-section__body about-section__body--lead">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Mia Maya Bevan is a multi-disciplinary artist working in practice across performance, film, sound, sculpture, and costume.
             </p>
             <p className="about-section__body">
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+              Many works often combine each of these, expressing Bevan’s interest in multi-media exhibition, live art, video culture, and fashion, largely in discussion of feminist ideas and experiences of the female body.
             </p>
             <p className="about-section__body">
-              Sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+              She is a recent graduate from Chelsea College of Arts, University of the Arts London, achieving a First Class Bachelors Degree in Fine Art and becoming one of four winners of the university’s 2026 BA Fine Art Dean’s Awards, which reward exceptional studentship and achievement throughout the course.
             </p>
             <div className="about-section__cta">
               <Link to="/contact" className="btn-pill">Learn More</Link>
