@@ -83,10 +83,23 @@ export default function Nav() {
       {/* Mobile menu */}
       <div className={`mobile-menu${menuOpen ? ' mobile-menu--open' : ''}`}>
         <div className="mobile-menu__inner">
-          <Link to="/" className="mobile-menu__link">Home</Link>
-          <Link to="/#portfolio" className="mobile-menu__link">Portfolio</Link>
-          <Link to="/contact" className="mobile-menu__link">Contact</Link>
-          <Link to="/shop" className="mobile-menu__link">Shop</Link>
+          <Link to="/" className="mobile-menu__link" onClick={() => setMenuOpen(false)}>Home</Link>
+          <Link
+            to="/#portfolio"
+            className="mobile-menu__link"
+            onClick={(e) => {
+              setMenuOpen(false);
+              if (location.pathname === '/') {
+                e.preventDefault();
+                document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
+            Portfolio
+          </Link>
+          <Link to="/contact" className="mobile-menu__link" onClick={() => setMenuOpen(false)}>Contact</Link>
+          <Link to="/shop" className="mobile-menu__link" onClick={() => setMenuOpen(false)}>Shop</Link>
+          <Link to="/cart" className="mobile-menu__link" onClick={() => setMenuOpen(false)}>Cart</Link>
         </div>
       </div>
     </>

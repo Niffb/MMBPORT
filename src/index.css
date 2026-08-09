@@ -1156,6 +1156,25 @@ body::after {
   .project-gallery {
     grid-template-columns: 1fr;
   }
+
+  .minimal-video-player__controls {
+    opacity: 0.95;
+    pointer-events: auto;
+    bottom: 12px;
+  }
+
+  .about-section__portrait {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .project-hero--upskirt {
+    padding: var(--space-lg) var(--space-xs);
+  }
+
+  .project-hero__center-img {
+    max-width: 220px;
+  }
 }
 
 
