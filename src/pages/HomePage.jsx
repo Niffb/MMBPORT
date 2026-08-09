@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { getAssetUrl } from '../utils/asset';
 
 const PORTFOLIO_ITEMS = [
   {
@@ -62,7 +63,7 @@ function PortfolioRow({ item, index }) {
       <div className="pf-row__media">
         {item.isVideo ? (
           <video
-            src={item.thumbnail}
+            src={getAssetUrl(item.thumbnail)}
             muted
             loop
             playsInline
@@ -70,7 +71,7 @@ function PortfolioRow({ item, index }) {
             className="pf-row__img"
           />
         ) : (
-          <img src={item.thumbnail} alt={item.title} className="pf-row__img" loading="lazy" />
+          <img src={getAssetUrl(item.thumbnail)} alt={item.title} className="pf-row__img" loading="lazy" />
         )}
       </div>
       <div className="pf-row__info">
@@ -104,7 +105,7 @@ export default function HomePage() {
       <section className="home-hero" id="hero">
         <div className="home-hero__bg" ref={parallaxRef}>
           <img
-            src="/hero-bg.jpg"
+            src={getAssetUrl('/hero-bg.jpg')}
             alt="Mia Maya Bevan — Fine Art"
             className="home-hero__bg-image"
           />
@@ -122,7 +123,7 @@ export default function HomePage() {
         <div className="about-section__inner">
           <div className="about-section__portrait">
             <img
-              src="/projects/thought-and-action/IMG_5629.jpeg"
+              src={getAssetUrl('/projects/thought-and-action/IMG_5629.jpeg')}
               alt="Portrait"
               className="about-section__portrait-img"
             />
