@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { getAssetUrl } from '../utils/asset';
+import PlaceholderImg from '../components/PlaceholderImg';
 
 const PORTFOLIO_ITEMS = [
   {
@@ -9,15 +10,14 @@ const PORTFOLIO_ITEMS = [
     title: 'UpSkirt',
     year: '2026',
     medium: 'Installation, live performance, film projection',
-    thumbnail: '/hero-bg.jpg',
+    usePlaceholder: true,
   },
   {
     slug: 'fraud-awards',
     title: 'Fraud Awards',
     year: '2024',
     medium: 'Film',
-    thumbnail: '/projects/dissertation/film.mp4',
-    isVideo: true,
+    usePlaceholder: true,
   },
   {
     slug: 'in-front-behind-inside',
@@ -61,7 +61,9 @@ function PortfolioRow({ item, index }) {
       className={`pf-row ${isReversed ? 'pf-row--reversed' : ''} ${isVisible ? 'is-visible' : ''}`}
     >
       <div className="pf-row__media">
-        {item.isVideo ? (
+        {item.usePlaceholder ? (
+          <PlaceholderImg variant="square" label={item.title} />
+        ) : item.isVideo ? (
           <video
             src={getAssetUrl(item.thumbnail)}
             muted

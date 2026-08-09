@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import VideoPlayer from '../components/VideoPlayer';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { getAssetUrl } from '../utils/asset';
+import PlaceholderImg from '../components/PlaceholderImg';
 
 const PROJECTS = {
   upskirt: {
@@ -9,8 +10,7 @@ const PROJECTS = {
     year: '2026',
     medium: 'Installation, live performance, film projection',
     accentColor: true,
-    heroImage: '/hero-bg.jpg',
-    video: '/projects/dissertation/film.mp4',
+    usePlaceholder: true,
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.',
   },
@@ -18,7 +18,7 @@ const PROJECTS = {
     title: 'Fraud Awards',
     year: '2024',
     medium: 'Film',
-    video: '/projects/dissertation/film.mp4',
+    usePlaceholder: true,
     description:
       'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   },
@@ -87,7 +87,7 @@ export default function ProjectPage() {
         <section className="project-hero project-hero--upskirt">
           <span className="project-hero__flanked-text anim-reveal">UPSKIRT</span>
           <div className="project-hero__center-img anim-reveal anim-delay-1">
-            <img src={getAssetUrl(project.heroImage)} alt={project.title} />
+            <PlaceholderImg variant="portrait" label="UpSkirt" />
           </div>
           <span className="project-hero__flanked-text anim-reveal anim-delay-2">UPSKIRT</span>
         </section>
@@ -100,12 +100,16 @@ export default function ProjectPage() {
         </section>
       )}
 
-      {/* VIDEO */}
-      {project.video && (
+      {/* VIDEO / PLACEHOLDER */}
+      {project.usePlaceholder && !isUpskirt ? (
+        <section className="project-video anim-reveal anim-delay-2">
+          <PlaceholderImg variant="landscape" label={project.title} />
+        </section>
+      ) : project.video ? (
         <section className="project-video anim-reveal anim-delay-2">
           <VideoPlayer src={getAssetUrl(project.video)} autoPlayOnScroll={true} />
         </section>
-      )}
+      ) : null}
 
       {/* DESCRIPTION */}
       <section
