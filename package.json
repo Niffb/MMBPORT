@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "predeploy": "npm run build && cp dist/index.html dist/404.html",
+    "predeploy": "npm run build && cp dist/index.html dist/404.html && find dist -type f \\( -name '*.mp4' -o -name '*.MOV' \\) -delete 2>/dev/null || true",
     "deploy": "gh-pages -d dist",
     "lint": "oxlint",
     "preview": "vite preview"

@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import VideoPlayer from '../components/VideoPlayer';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { getAssetUrl } from '../utils/asset';
 
 const PROJECTS = {
   upskirt: {
@@ -86,7 +87,7 @@ export default function ProjectPage() {
         <section className="project-hero project-hero--upskirt">
           <span className="project-hero__flanked-text anim-reveal">UPSKIRT</span>
           <div className="project-hero__center-img anim-reveal anim-delay-1">
-            <img src={project.heroImage} alt={project.title} />
+            <img src={getAssetUrl(project.heroImage)} alt={project.title} />
           </div>
           <span className="project-hero__flanked-text anim-reveal anim-delay-2">UPSKIRT</span>
         </section>
@@ -102,7 +103,7 @@ export default function ProjectPage() {
       {/* VIDEO */}
       {project.video && (
         <section className="project-video anim-reveal anim-delay-2">
-          <VideoPlayer src={project.video} autoPlayOnScroll={true} />
+          <VideoPlayer src={getAssetUrl(project.video)} autoPlayOnScroll={true} />
         </section>
       )}
 
@@ -118,7 +119,7 @@ export default function ProjectPage() {
       {project.images && project.images.length > 0 && (
         <section className="project-gallery">
           {project.images.map((src, idx) => (
-            <img key={idx} src={src} alt={`${project.title} ${idx + 1}`} loading="lazy" />
+            <img key={idx} src={getAssetUrl(src)} alt={`${project.title} ${idx + 1}`} loading="lazy" />
           ))}
         </section>
       )}

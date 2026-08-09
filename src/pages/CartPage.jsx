@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { getAssetUrl } from '../utils/asset';
 
 const MOCK_CART_ITEMS = [
   {
@@ -41,7 +42,7 @@ export default function CartPage() {
           {MOCK_CART_ITEMS.map((item) => (
             <div key={item.id} className="cart-item">
               <div className="cart-item__img">
-                <img src={item.thumbnail} alt={item.title} />
+                <img src={getAssetUrl(item.thumbnail)} alt={item.title} />
               </div>
               <div className="cart-item__details">
                 <h3 className="cart-item__title">{item.title}</h3>
