@@ -50,15 +50,14 @@ const PORTFOLIO_ITEMS = [
   },
 ];
 
-function PortfolioRow({ item, index }) {
+function PortfolioRow({ item }) {
   const [ref, isVisible] = useScrollReveal();
-  const isReversed = index % 2 !== 0;
 
   return (
     <Link
       to={`/project/${item.slug}`}
       ref={ref}
-      className={`pf-row ${isReversed ? 'pf-row--reversed' : ''} ${isVisible ? 'is-visible' : ''}`}
+      className={`pf-row ${isVisible ? 'is-visible' : ''}`}
     >
       <div className="pf-row__media">
         {item.usePlaceholder ? (
@@ -153,8 +152,8 @@ export default function HomePage() {
       <section className="portfolio-feed" id="portfolio">
         <h2 className="portfolio-feed__heading anim-reveal">Portfolio</h2>
         <div className="portfolio-feed__list">
-          {PORTFOLIO_ITEMS.map((item, idx) => (
-            <PortfolioRow key={item.slug} item={item} index={idx} />
+          {PORTFOLIO_ITEMS.map((item) => (
+            <PortfolioRow key={item.slug} item={item} />
           ))}
         </div>
       </section>
