@@ -65,7 +65,7 @@ const FOLDERS = [
       { type: 'image', src: '/projects/the-pictures/IMG_0669.JPG', label: 'The Pictures III' },
       { type: 'image', src: '/projects/the-pictures/IMG_0670.JPG', label: 'The Pictures IV' },
       { type: 'image', src: '/projects/the-pictures/IMG_0675.JPG', label: 'The Pictures V' },
-      { type: 'video', src: '/projects/the-pictures/IMG_0696.MOV', label: 'The Pictures — Short Film' },
+      { type: 'video', src: '/projects/the-pictures/IMG_0696.mp4', label: 'The Pictures — Short Film' },
     ],
   },
   {

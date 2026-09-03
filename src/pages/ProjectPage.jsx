@@ -53,7 +53,7 @@ const PROJECTS = {
     blocks: [
       {
         type: 'full-video',
-        src: '/projects/fraud-awards/Fraud Awards All Films Loop - Mia Maya Bevan copy.mov',
+        src: '/projects/fraud-awards/Fraud Awards All Films Loop - Mia Maya Bevan copy.mp4',
         scrollHint: 'Scroll down'
       },
       {
@@ -84,7 +84,7 @@ const PROJECTS = {
             honor: 'Achieved runner up for Barceló Group Emerging Artist Award'
           },
           {
-            videoSrc: '/projects/fraud-awards/Fraud Awards in the Crypt - Mia Maya Bevan.mov',
+            videoSrc: '/projects/fraud-awards/Fraud Awards in the Crypt - Mia Maya Bevan.mp4',
             title: 'Inhabiting the Inbetween Exhibition',
             venue: 'The Crypt Gallery, Euston',
             dates: 'Exhibited from 20th – 22nd April 2024',
@@ -190,7 +190,7 @@ const PROJECTS = {
       },
       {
         type: 'full-video',
-        src: '/projects/the-pictures/IMG_0696.MOV'
+        src: '/projects/the-pictures/IMG_0696.mp4'
       }
     ]
   }

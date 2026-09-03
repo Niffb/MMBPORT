@@ -265,23 +265,40 @@ body:hover .cursor-glow { opacity: 1; }
 .anim-reveal {
   opacity: 0;
   transform: translateY(24px);
+  animation: revealUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+.anim-delay-1 { animation-delay: 0.1s; }
+.anim-delay-2 { animation-delay: 0.2s; }
+.anim-delay-3 { animation-delay: 0.35s; }
+.anim-delay-4 { animation-delay: 0.5s; }
+
+@keyframes revealUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll-triggered elements in project detail pages */
+.project-block.anim-reveal {
+  opacity: 0;
+  transform: translateY(24px);
   filter: blur(3px);
+  animation: none;
   transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
               filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform, filter;
 }
 
+.project-block.anim-reveal.is-visible,
 .anim-reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
   filter: blur(0);
 }
-
-.anim-delay-1 { transition-delay: 0.1s; }
-.anim-delay-2 { transition-delay: 0.2s; }
-.anim-delay-3 { transition-delay: 0.35s; }
-.anim-delay-4 { transition-delay: 0.5s; }
 
 
 /* ========================================
@@ -1326,162 +1343,55 @@ body::after {
 
 
 /* ========================================
-   FOOTER
+   FOOTER (minimal)
    ======================================== */
 .footer {
-  background: var(--dark);
-  color: var(--white);
-  padding: var(--space-xl) var(--space-md) var(--space-md);
+  padding: var(--space-md);
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
   margin-top: var(--space-xl);
-  position: relative;
-  overflow: hidden;
 }
 
-.footer__container {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-}
-
-.footer__hero {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  padding-bottom: var(--space-md);
-}
-
-.footer__subtitle {
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--mid-light);
-  display: block;
-  margin-bottom: var(--space-xs);
-}
-
-.footer__brand-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 6vw, 4.8rem);
-  font-weight: 300;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--white);
-  transition: opacity 0.3s ease;
-}
-
-.footer__grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: var(--space-lg);
-  align-items: start;
-}
-
-.footer__tagline {
-  font-size: 0.95rem;
-  color: var(--mid-light);
-  line-height: 1.7;
-  max-width: 380px;
-  margin-bottom: var(--space-md);
-}
-
-.footer__location {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--mid-light);
-  padding: 6px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-}
-
-.footer__dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #4cd964;
-  box-shadow: 0 0 8px rgba(76, 217, 100, 0.6);
-}
-
-.footer__heading {
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--mid-light);
-  margin-bottom: var(--space-sm);
-  font-weight: 500;
-}
-
-.footer__links {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.footer__links a {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
-  transition: color 0.3s ease, transform 0.3s ease;
-  display: inline-block;
-}
-
-.footer__links a:hover {
-  color: var(--white);
-  transform: translateX(4px);
-}
-
-.footer__col--action {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.footer__top-btn {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: var(--white);
-  padding: 14px 22px;
-  border-radius: 40px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: all 0.3s var(--ease-out);
-}
-
-.footer__top-btn:hover {
-  background: var(--white);
-  color: var(--dark);
-  border-color: var(--white);
-}
-
-.footer__top-btn:hover .footer__top-arrow {
-  transform: translateY(-3px);
-}
-
-.footer__top-arrow {
-  font-size: 0.9rem;
-  transition: transform 0.3s ease;
-}
-
-.footer__bottom {
+.footer__inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: var(--space-md);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.footer__name {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  transition: opacity 0.3s ease;
+}
+
+.footer__name:hover { opacity: 0.6; }
+
+.footer__copy {
   font-size: 0.75rem;
-  color: var(--mid-light);
+  color: var(--mid);
   letter-spacing: 0.05em;
 }
+
+.footer__top {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--mid);
+  background: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+  padding: 4px 0;
+}
+
+.footer__top:hover { color: var(--dark); }
 
 
 /* ========================================
@@ -1542,13 +1452,10 @@ body::after {
     grid-template-columns: 1fr;
   }
 
-  .footer__grid {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-md);
-  }
-
-  .footer__col--action {
-    justify-content: flex-start;
+  .footer__inner {
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: center;
   }
 
   .contact-body__socials {
@@ -1766,16 +1673,6 @@ body::after {
   }
 }
 
-@media (max-width: 640px) {
-  .footer__grid {
-    grid-template-columns: 1fr;
-  }
-  .footer__bottom {
-    flex-direction: column;
-    gap: 8px;
-    text-align: center;
-  }
-}
 
 /* ========================================
    PROJECT DETAIL PAGES & BESPOKE LAYOUTS
